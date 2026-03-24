@@ -12,7 +12,7 @@ export const Experiences = () => {
           </div>
           <div style={{ flex: 1 }}>
             <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#e6edf3', marginBottom: '8px' }}>
-              <a href="https://headstarter.co/" target="_blank" rel="noopener noreferrer" style={{ color: '#f0883e', textDecoration: 'none' }}>
+              <a href="https://www.jpmorganchase.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#f0883e', textDecoration: 'none' }}>
                 Software Engineer 1
               </a>
             </h2>
