@@ -1,6 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 
-export const Sidebar = () => {
+type SidebarProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const location = useLocation();
 
   const navItems = [
@@ -18,7 +23,18 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="sidebar">
+    <>
+      {isOpen && <div className="sidebar-overlay" onClick={onClose} aria-hidden="true" />}
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+        <div className="sidebar-mobile-header">
+          <button
+            className="sidebar-close-button"
+            aria-label="Close navigation menu"
+            onClick={onClose}
+          >
+            ✕
+          </button>
+        </div>
       <div className="sidebar-header">
         <div className="logo">
           <span className="logo-text">CY</span>
@@ -34,6 +50,7 @@ export const Sidebar = () => {
                 <Link 
                   to={item.path} 
                   className={`nav-item ${isActive(item.path) ? 'active' : ''}`}
+                  onClick={onClose}
                 >
                   <span className="nav-icon">{item.icon}</span>
                   <span className="nav-label">{item.label}</span>
@@ -52,6 +69,7 @@ export const Sidebar = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="nav-item"
+                onClick={onClose}
               >
                 <span className="nav-icon">📁</span>
                 <span className="nav-label">GitHub</span>
@@ -63,6 +81,7 @@ export const Sidebar = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="nav-item"
+                onClick={onClose}
               >
                 <span className="nav-icon">💼</span>
                 <span className="nav-label">LinkedIn</span>
@@ -81,7 +100,8 @@ export const Sidebar = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
